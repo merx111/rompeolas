@@ -15,47 +15,32 @@
       position: relative;
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #18435a;
-      /* Fondo de playa con mar */
+      /* Fondo de playa con mar en GRANDE */
       background: #6dd5ed;
-      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80');
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1500&q=80');
       background-size: cover;
-      background-position: center 0;
       background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center 0;
       transition: background-position 0.2s;
     }
     header {
       position: relative;
       width: 100%;
-      height: 320px;
-      overflow: hidden;
+      height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .banner-bg {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://media.istockphoto.com/id/1045053748/es/foto/bar-en-la-playa-cerca-de-la-playa.jpg?s=612x612&w=0&k=20&c=qVzUj83LpF3Fbo9ZBJ9xYjosRt-2LKXHxd_vbLgJBVU=');
-      background-size: cover;
-      background-position: center 0;
-      filter: blur(7px) brightness(0.85);
-      z-index: 1;
-      transition: background-position 0.2s;
-    }
-    .banner-overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.60) 65%, rgba(255,255,255,0.88));
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      /* Banner blanco con opacidad */
+      background: rgba(255,255,255,0.85);
       z-index: 2;
     }
     .banner-content {
       position: relative;
       z-index: 3;
       text-align: center;
+      width: 100%;
     }
     .banner-content h1 {
       font-family: 'Pacifico', cursive, sans-serif;
@@ -137,14 +122,19 @@
       bottom: 0;
       color: #297fa6;
       font-size: 1em;
+      z-index: 10;
+    }
+
+    @media (max-width: 800px) {
+      .zona-menu, .zona-bienvenida { padding: 16px 8px; }
+      .menu-item { width: 90%; }
+      header { height: 160px; }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <div class="banner-bg" id="bannerBg"></div>
-    <div class="banner-overlay"></div>
     <div class="banner-content">
       <h1>Rompeolas</h1>
       <p>Restaurante de Playa &mdash; Sabor, brisa y mar</p>
@@ -194,13 +184,10 @@
     &copy; 2025 Restaurante Rompeolas · Playa, Sol y Buen Sabor
   </footer>
   <script>
-    // Parallax efecto para el banner y el fondo
+    // Parallax efecto para el fondo de playa
     window.addEventListener('scroll', function() {
       const scrollY = window.scrollY;
-      // Banner: velocidad parallax
-      const banner = document.getElementById('bannerBg');
-      banner.style.backgroundPosition = `center ${scrollY * 0.5}px`;
-      // Fondo de toda la página: otro ratio parallax
+      // Fondo de toda la página
       document.body.style.backgroundPosition = `center ${scrollY * 0.25}px`;
     });
   </script>
