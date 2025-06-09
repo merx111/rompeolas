@@ -72,6 +72,72 @@
       border-radius: 20px;
       margin-top: 8px;
     }
+    /* Carrusel de fotos */
+    .carousel-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 25px auto 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      min-height: 320px;
+    }
+    .carousel-track {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      overflow: visible;
+    }
+    .carousel-img {
+      transition: all 0.4s cubic-bezier(.63,-0.41,.37,1.37);
+      opacity: 0.2;
+      width: 110px;
+      height: 75px;
+      object-fit: cover;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      filter: grayscale(60%);
+      z-index: 1;
+    }
+    .carousel-img.active {
+      opacity: 1;
+      width: 390px;
+      height: 260px;
+      filter: none;
+      z-index: 3;
+      box-shadow: 0 4px 24px rgba(33,147,176,0.14);
+    }
+    .carousel-img.side {
+      opacity: 0.6;
+      width: 180px;
+      height: 120px;
+      filter: grayscale(25%);
+      z-index: 2;
+    }
+    .carousel-btn {
+      background: rgba(255,255,255,0.85);
+      border: none;
+      font-size: 2.5em;
+      color: #2193b0;
+      cursor: pointer;
+      border-radius: 50%;
+      padding: 0 12px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      box-shadow: 0 2px 8px rgba(33,147,176,0.09);
+      transition: background 0.2s;
+    }
+    .carousel-btn:hover {
+      background: #e0f7fa;
+    }
+    .left-btn { left: -8px; }
+    .right-btn { right: -8px; }
+    /* Fin carrusel de fotos */
     .welcome-section {
       margin: 40px auto 25px auto;
       max-width: 600px;
@@ -211,6 +277,9 @@
       .accordion-content ul li { flex-direction: column; align-items: flex-start; }
       .price { margin-left: 0; margin-top: 2px; }
       .banner-content .logo-icon { width: 32px; height: 32px; }
+      .carousel-img.active { width: 240px; height: 140px; }
+      .carousel-img.side { width: 90px; height: 60px; }
+      .carousel-container { min-height: 160px; }
     }
   </style>
 </head>
@@ -224,6 +293,20 @@
       <p>Beachfront Restaurant — Flavor, Breeze & Sea</p>
     </div>
   </header>
+
+  <!-- Inicio carrusel de fotos -->
+  <div class="carousel-container">
+    <button class="carousel-btn left-btn">&#10094;</button>
+    <div class="carousel-track">
+      <img src="https://foodservicemagazine.es/wp-content/uploads/2017/03/cocinar-a-la-brasa-740x435.jpg" class="carousel-img" alt="Foto 1">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7wLtZ99svkMR2yy9oNKKOCfms7MVPhDQFNQ&s" class="carousel-img" alt="Foto 2">
+      <img src="https://www.tudecora.com/wp/wp-content/uploads/2016/07/f65a199f60f74a317691859506751f51.jpg" class="carousel-img" alt="Foto 3">
+      <img src="https://www.tudecora.com/wp/wp-content/uploads/2016/07/bulletprblog.jpg" class="carousel-img" alt="Foto 4">
+      <img src="https://media.istockphoto.com/id/1364591768/es/foto/gente-bebiendo-cervezas-en-un-chiringuito-chiringuito-espa%C3%B1a.jpg?s=612x612&w=0&k=20&c=KoAWiMpvMqqW36JLGroIB9Md3DNDDfa93Uo_yGbDW9M=" class="carousel-img" alt="Foto 5">
+    </div>
+    <button class="carousel-btn right-btn">&#10095;</button>
+  </div>
+  <!-- Fin carrusel de fotos -->
 
   <section class="welcome-section">
     <h2>Welcome to Rompeolas!</h2>
@@ -392,6 +475,32 @@
         section.classList.toggle('open');
       });
     });
+
+    // Carrusel de fotos
+    const images = document.querySelectorAll('.carousel-img');
+    const leftBtn = document.querySelector('.left-btn');
+    const rightBtn = document.querySelector('.right-btn');
+    let current = 0;
+
+    function updateCarousel() {
+      images.forEach((img, idx) => {
+        img.classList.remove('active', 'side');
+        if (idx === current) {
+          img.classList.add('active');
+        } else if (idx === (current - 1 + images.length) % images.length || idx === (current + 1) % images.length) {
+          img.classList.add('side');
+        }
+      });
+    }
+    leftBtn.addEventListener('click', () => {
+      current = (current - 1 + images.length) % images.length;
+      updateCarousel();
+    });
+    rightBtn.addEventListener('click', () => {
+      current = (current + 1) % images.length;
+      updateCarousel();
+    });
+    updateCarousel();
   </script>
 </body>
 </html>
