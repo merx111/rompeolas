@@ -105,8 +105,7 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-      /* Move content to the right to make space for arrow */
-      justify-content: flex-start;
+      justify-content: space-between;
       padding: 18px 20px;
       font-size: 1.15em;
       color: #176585;
@@ -117,21 +116,15 @@
       transition: background 0.2s;
       font-weight: 600;
       user-select: none;
-      gap: 14px;
     }
     .accordion-arrow {
       display: inline-block;
-      margin-left: 0;
-      margin-right: 12px;
+      margin-left: 20px;
+      min-width: 1.2em;
       transition: transform 0.3s cubic-bezier(.63,-0.41,.37,1.37);
       font-size: 1.2em;
       color: #2193b0;
-      min-width: 1.2em;
-      /* Vertically align with text */
-    }
-    .accordion-header span:last-child {
-      /* Ensure the arrow is at the far left */
-      order: -1;
+      flex-shrink: 0;
     }
     .accordion-section.open .accordion-arrow {
       transform: rotate(90deg);
@@ -159,6 +152,9 @@
       color: #18435a;
       padding-left: 0.9em;
       text-indent: -0.9em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     .accordion-content ul li:before {
       content: "•";
@@ -166,6 +162,13 @@
       display: inline-block;
       width: 0.8em;
       margin-left: -0.8em;
+    }
+    .price {
+      color: #2193b0;
+      font-weight: bold;
+      margin-left: 18px;
+      white-space: nowrap;
+      font-size: 1em;
     }
     footer {
       text-align: center;
@@ -182,6 +185,8 @@
       header { height: 160px; }
       .banner-content h1 { font-size: 2em; }
       .menu-section-container { padding: 20px 2vw; }
+      .accordion-content ul li { flex-direction: column; align-items: flex-start; }
+      .price { margin-left: 0; margin-top: 2px; }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -210,117 +215,117 @@
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🥥 Starters & Bites</span></div>
+      <div class="accordion-header"><span>🥥 Starters & Bites</span><span class="accordion-arrow">&#9654;</span></div>
       <div class="accordion-content">
         <ul>
-          <li>Guacamole with handmade tortilla chips</li>
-          <li>Caribbean-style shrimp ceviche</li>
-          <li>Tuna tartare with mango and avocado</li>
-          <li>Garlic octopus tostadas</li>
-          <li>Tropical BBQ chicken wings</li>
-          <li>Fried calamari with lime aioli</li>
-          <li>Nachos with cheese, jalapeños, and pico de gallo</li>
-          <li>Shrimp and Oaxaca cheese quesadillas</li>
-          <li>Steamed mussels in white wine</li>
-          <li>Spicy “bravas” potatoes with passion fruit sauce</li>
+          <li>Guacamole with handmade tortilla chips <span class="price">$8</span></li>
+          <li>Caribbean-style shrimp ceviche <span class="price">$13</span></li>
+          <li>Tuna tartare with mango and avocado <span class="price">$15</span></li>
+          <li>Garlic octopus tostadas <span class="price">$14</span></li>
+          <li>Tropical BBQ chicken wings <span class="price">$11</span></li>
+          <li>Fried calamari with lime aioli <span class="price">$12</span></li>
+          <li>Nachos with cheese, jalapeños, and pico de gallo <span class="price">$9</span></li>
+          <li>Shrimp and Oaxaca cheese quesadillas <span class="price">$12</span></li>
+          <li>Steamed mussels in white wine <span class="price">$14</span></li>
+          <li>Spicy “bravas” potatoes with passion fruit sauce <span class="price">$8</span></li>
         </ul>
       </div>
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🐟 From the Sea</span></div>
+      <div class="accordion-header"><span>🐟 From the Sea</span><span class="accordion-arrow">&#9654;</span></div>
       <div class="accordion-content">
         <ul>
-          <li>Grilled mahi-mahi fillet with coconut sauce</li>
-          <li>Grilled octopus with Canarian potatoes</li>
-          <li>Baja-style fish tacos</li>
-          <li>Shrimp in Thai red curry</li>
-          <li>Seafood skewers with jasmine rice</li>
-          <li>Seafood rice stew</li>
-          <li>Garlic prawns with crispy bread</li>
-          <li>Tropical salmon poke bowl</li>
+          <li>Grilled mahi-mahi fillet with coconut sauce <span class="price">$20</span></li>
+          <li>Grilled octopus with Canarian potatoes <span class="price">$22</span></li>
+          <li>Baja-style fish tacos <span class="price">$15</span></li>
+          <li>Shrimp in Thai red curry <span class="price">$18</span></li>
+          <li>Seafood skewers with jasmine rice <span class="price">$17</span></li>
+          <li>Seafood rice stew <span class="price">$19</span></li>
+          <li>Garlic prawns with crispy bread <span class="price">$16</span></li>
+          <li>Tropical salmon poke bowl <span class="price">$16</span></li>
         </ul>
       </div>
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🍔 Burgers & Sandwiches</span></div>
+      <div class="accordion-header"><span>🍔 Burgers & Sandwiches</span><span class="accordion-arrow">&#9654;</span></div>
       <div class="accordion-content">
         <ul>
-          <li>Beef burger with cheddar cheese and pineapple</li>
-          <li>Veggie burger with hummus and arugula</li>
-          <li>Grilled chicken sandwich with pesto</li>
-          <li>Crispy shrimp torta</li>
-          <li>Tuna wrap with spinach and chipotle mayo</li>
+          <li>Beef burger with cheddar cheese and pineapple <span class="price">$13</span></li>
+          <li>Veggie burger with hummus and arugula <span class="price">$12</span></li>
+          <li>Grilled chicken sandwich with pesto <span class="price">$12</span></li>
+          <li>Crispy shrimp torta <span class="price">$13</span></li>
+          <li>Tuna wrap with spinach and chipotle mayo <span class="price">$12</span></li>
         </ul>
       </div>
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🥗 Refreshing Salads</span></div>
+      <div class="accordion-header"><span>🥗 Refreshing Salads</span><span class="accordion-arrow">&#9654;</span></div>
       <div class="accordion-content">
         <ul>
-          <li>Caesar salad with shrimp</li>
-          <li>Tropical mango, avocado, and nut salad</li>
-          <li>Greek salad with feta and olives</li>
-          <li>Quinoa bowl with roasted vegetables and tofu</li>
+          <li>Caesar salad with shrimp <span class="price">$13</span></li>
+          <li>Tropical mango, avocado, and nut salad <span class="price">$11</span></li>
+          <li>Greek salad with feta and olives <span class="price">$10</span></li>
+          <li>Quinoa bowl with roasted vegetables and tofu <span class="price">$12</span></li>
         </ul>
       </div>
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🍛 Main Dishes</span></div>
+      <div class="accordion-header"><span>🍛 Main Dishes</span><span class="accordion-arrow">&#9654;</span></div>
       <div class="accordion-content">
         <ul>
-          <li>Mixed Mediterranean-style paella</li>
-          <li>BBQ ribs with sweet potato mash</li>
-          <li>Chicken curry with basmati rice</li>
-          <li>Mixed fajitas with homemade tortillas</li>
-          <li>Pasta with garlic seafood sauce</li>
-          <li>Wood-fired Hawaiian pizza</li>
-          <li>Stuffed arepas (shredded beef or chicken avocado)</li>
+          <li>Mixed Mediterranean-style paella <span class="price">$21</span></li>
+          <li>BBQ ribs with sweet potato mash <span class="price">$18</span></li>
+          <li>Chicken curry with basmati rice <span class="price">$16</span></li>
+          <li>Mixed fajitas with homemade tortillas <span class="price">$16</span></li>
+          <li>Pasta with garlic seafood sauce <span class="price">$15</span></li>
+          <li>Wood-fired Hawaiian pizza <span class="price">$14</span></li>
+          <li>Stuffed arepas (shredded beef or chicken avocado) <span class="price">$12</span></li>
         </ul>
       </div>
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🍟 Snacks & Sides</span></div>
+      <div class="accordion-header"><span>🍟 Snacks & Sides</span><span class="accordion-arrow">&#9654;</span></div>
       <div class="accordion-content">
         <ul>
-          <li>Plantain chips with lime yogurt dip</li>
-          <li>Iberian ham croquettes</li>
-          <li>Shrimp and cheese empanadas</li>
-          <li>Grilled corn cob with garlic butter</li>
-          <li>Tomato and basil bruschettas</li>
+          <li>Plantain chips with lime yogurt dip <span class="price">$7</span></li>
+          <li>Iberian ham croquettes <span class="price">$8</span></li>
+          <li>Shrimp and cheese empanadas <span class="price">$9</span></li>
+          <li>Grilled corn cob with garlic butter <span class="price">$6</span></li>
+          <li>Tomato and basil bruschettas <span class="price">$8</span></li>
         </ul>
       </div>
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🍰 Desserts</span></div>
+      <div class="accordion-header"><span>🍰 Desserts</span><span class="accordion-arrow">&#9654;</span></div>
       <div class="accordion-content">
         <ul>
-          <li>Passion fruit tart</li>
-          <li>Brownie with coconut ice cream</li>
-          <li>Mango mousse</li>
-          <li>Roasted pineapple with honey and cinnamon</li>
-          <li>Homemade ice cream (flavors: vanilla, coconut, mango, chocolate)</li>
+          <li>Passion fruit tart <span class="price">$7</span></li>
+          <li>Brownie with coconut ice cream <span class="price">$8</span></li>
+          <li>Mango mousse <span class="price">$7</span></li>
+          <li>Roasted pineapple with honey and cinnamon <span class="price">$7</span></li>
+          <li>Homemade ice cream (vanilla, coconut, mango, chocolate) <span class="price">$6</span></li>
         </ul>
       </div>
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🍹 Drinks & Cocktails</span></div>
+      <div class="accordion-header"><span>🍹 Drinks & Cocktails</span><span class="accordion-arrow">&#9654;</span></div>
       <div class="accordion-content">
         <ul>
-          <li>Classic / passion fruit / mango mojito</li>
-          <li>Piña colada</li>
-          <li>Caipirinha</li>
-          <li>Local and craft beer</li>
-          <li>Fresh coconut water</li>
-          <li>Tropical fruit smoothies</li>
-          <li>Red or white sangria</li>
-          <li>Sodas and natural juices</li>
+          <li>Classic / passion fruit / mango mojito <span class="price">$9</span></li>
+          <li>Piña colada <span class="price">$8</span></li>
+          <li>Caipirinha <span class="price">$8</span></li>
+          <li>Local and craft beer <span class="price">$6</span></li>
+          <li>Fresh coconut water <span class="price">$5</span></li>
+          <li>Tropical fruit smoothies <span class="price">$6</span></li>
+          <li>Red or white sangria <span class="price">$7</span></li>
+          <li>Sodas and natural juices <span class="price">$4</span></li>
         </ul>
       </div>
     </div>
