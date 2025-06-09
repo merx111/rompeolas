@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="https://cdn-icons-png.freepik.com/512/616/616545.png">
-  <!-- Add a Google Font for prices (e.g., 'Fira Mono') -->
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@500&family=Pacifico&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Pacifico (logo), Fira Mono (prices), Quicksand (body), Raleway (headers) -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@500&family=Pacifico&family=Quicksand:wght@400;500&family=Raleway:wght@700&display=swap" rel="stylesheet">
   <style>
     html, body {
       height: 100%;
@@ -17,15 +17,16 @@
     body {
       min-height: 100vh;
       position: relative;
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family: 'Quicksand', Arial, sans-serif;
       color: #18435a;
-      background: #6dd5ed;
-      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');
+      /* Beachy gradient overlay */
+      background: linear-gradient(to bottom, #f5fafd 0%, #d8f7fa 100%);
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80'), linear-gradient(to bottom, #f5fafd 0%, #d8f7fa 100%);
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: center center;
-      background-blend-mode: normal;
+      background-blend-mode: lighten;
       min-width: 100vw;
       transition: none;
     }
@@ -36,9 +37,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      background: rgba(255,255,255,0.85);
+      box-shadow: 0 4px 16px rgba(33,147,176,0.10);
+      background: rgba(255,255,255,0.92);
       z-index: 2;
+      border-bottom: 4px solid #ffe082;
     }
     .banner-content {
       position: relative;
@@ -48,71 +50,113 @@
     }
     .banner-content h1 {
       font-family: 'Pacifico', cursive, sans-serif;
-      color: #176585;
+      color: #1e7466;
       font-size: 3em;
       margin-bottom: 0.2em;
-      letter-spacing: 2px;
-      text-shadow: 0 2px 12px rgba(255,255,255,0.5);
+      letter-spacing: 2.5px;
+      text-shadow: 0 2px 16px rgba(255,255,255,0.7);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 16px;
     }
     .banner-content .logo-icon {
-      width: 48px;
-      height: 48px;
+      width: 56px;
+      height: 56px;
       vertical-align: middle;
+      filter: drop-shadow(0 2px 8px #ffd54f);
     }
     .banner-content p {
-      font-size: 1.2em;
-      color: #297fa6;
-      background: rgba(255,255,255,0.45);
+      font-family: 'Raleway', Arial, sans-serif;
+      font-size: 1.15em;
+      color: #2193b0;
+      background: rgba(255,255,255,0.60);
       display: inline-block;
       padding: 7px 22px;
       border-radius: 20px;
       margin-top: 8px;
+      box-shadow: 0 2px 8px rgba(33,147,176,0.10);
+      letter-spacing: 1.5px;
     }
     .welcome-section {
-      margin: 40px auto 25px auto;
-      max-width: 600px;
-      background: rgba(255,255,255,0.85);
-      border-radius: 15px;
-      padding: 24px 32px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      margin: 36px auto 24px auto;
+      max-width: 610px;
+      background: rgba(255,255,255,0.89);
+      border-radius: 20px;
+      padding: 26px 36px;
+      box-shadow: 0 2px 14px rgba(33,147,176,0.08);
       text-align: center;
+      border-bottom: 3px solid #ffe082;
+      border-top: 2px solid #b2ebf2;
+      position: relative;
+      overflow: hidden;
+    }
+    .welcome-section:before {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 30px;
+      background: url("https://www.transparenttextures.com/patterns/sandpaper.png");
+      opacity: 0.09;
+      pointer-events: none;
     }
     .welcome-section h2 {
       color: #2193b0;
       margin-top: 0;
+      font-family: 'Raleway', Arial, sans-serif;
+      font-size: 2.1em;
+      letter-spacing: 1.3px;
+      font-weight: 700;
+      margin-bottom: 0.2em;
+      text-shadow: 0 2px 12px #fff9;
+    }
+    .welcome-section p {
+      font-size: 1.13em;
+      color: #237c90;
+      font-family: 'Quicksand', Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      letter-spacing: 0.2px;
     }
     .menu-section-container {
       margin: 30px auto 80px auto;
-      max-width: 800px;
-      background: rgba(255,255,255,0.95);
-      border-radius: 18px;
-      padding: 32px 20px;
-      box-shadow: 0 2px 14px rgba(0,0,0,0.13);
+      max-width: 860px;
+      background: rgba(255,255,255,0.96);
+      border-radius: 30px 30px 18px 18px;
+      padding: 32px 24px;
+      box-shadow: 0 2px 24px 0 rgba(33,147,176,0.12);
+      border-bottom: 3px solid #ffe082;
+      border-top: 2px solid #b2ebf2;
+      backdrop-filter: blur(1px);
     }
     .menu-section-container h2 {
       color: #176585;
       margin-top: 0;
       text-align: center;
-      font-size: 2em;
-      margin-bottom: 0.3em;
+      font-family: 'Pacifico', cursive, sans-serif;
+      font-size: 2.5em;
+      margin-bottom: 0.2em;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 12px #fff8;
     }
     .menu-desc {
       text-align: center;
       color: #297fa6;
-      font-size: 1.15em;
+      font-size: 1.16em;
       margin-bottom: 30px;
+      font-family: 'Quicksand', Arial, sans-serif;
+      background: rgba(255,255,255,0.6);
+      border-radius: 15px;
+      padding: 10px 0;
+      letter-spacing: 0.5px;
     }
     .accordion-section {
-      border-radius: 10px;
-      margin-bottom: 18px;
-      box-shadow: 0 1px 4px rgba(33,147,176,0.07);
+      border-radius: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 6px rgba(33,147,176,0.08);
       background: rgba(255,255,255,0.88);
       overflow: hidden;
-      border: 1px solid #e0f7fa;
+      border: 1.3px solid #b2ebf2;
     }
     .accordion-header {
       cursor: pointer;
@@ -120,32 +164,35 @@
       align-items: center;
       justify-content: flex-start;
       padding: 18px 20px;
-      font-size: 1.15em;
-      color: #176585;
-      background: rgba(224,247,250,0.7);
+      font-size: 1.19em;
+      color: #1e7466;
+      background: linear-gradient(90deg, #e0f7fa 80%, #ffe082 175%);
       border: none;
       outline: none;
       width: 100%;
       transition: background 0.2s;
-      font-weight: 600;
+      font-family: 'Raleway', Arial, sans-serif;
+      font-weight: 700;
       user-select: none;
+      letter-spacing: 1px;
     }
     .accordion-arrow {
       display: inline-block;
-      margin-right: 18px;
+      margin-right: 22px;
       margin-left: 0;
       min-width: 1.2em;
       transition: transform 0.3s cubic-bezier(.63,-0.41,.37,1.37);
-      font-size: 1.2em;
-      color: #2193b0;
+      font-size: 1.3em;
+      color: #ffa000;
       flex-shrink: 0;
+      filter: drop-shadow(0 1px 2px #ffd54f55);
     }
     .accordion-title {
       flex: 1 1 auto;
       display: flex;
       align-items: center;
-      /* optional gap if you want emojis a bit away from text */
       gap: 6px;
+      font-family: 'Raleway', Arial, sans-serif;
     }
     .accordion-section.open .accordion-arrow {
       transform: rotate(90deg);
@@ -158,7 +205,7 @@
       padding: 0 20px;
     }
     .accordion-section.open .accordion-content {
-      padding: 16px 20px 14px 32px;
+      padding: 18px 20px 18px 38px;
       max-height: 800px;
       background: none;
     }
@@ -168,47 +215,69 @@
       margin: 0 0 10px 0;
     }
     .accordion-content ul li {
-      font-size: 1em;
-      margin-bottom: 7px;
-      color: #18435a;
+      font-size: 1.08em;
+      margin-bottom: 10px;
+      color: #156b87;
       padding-left: 0.9em;
       text-indent: -0.9em;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-family: 'Quicksand', Arial, sans-serif;
+      background: rgba(255,236,179,0.07);
+      border-radius: 8px;
+      padding-right: 8px;
+      line-height: 1.4;
     }
     .accordion-content ul li:before {
       content: "•";
-      color: #297fa6;
+      color: #ffd54f;
       display: inline-block;
       width: 0.8em;
       margin-left: -0.8em;
+      font-size: 1.3em;
+      vertical-align: middle;
     }
     .price {
       color: #21a13d;
       font-weight: bold;
       margin-left: 18px;
       white-space: nowrap;
-      font-size: 1em;
+      font-size: 1.07em;
       font-family: 'Fira Mono', 'Consolas', 'Menlo', 'monospace';
       letter-spacing: 0.5px;
+      background: rgba(183,239,190,0.23);
+      padding: 3px 12px 3px 10px;
+      border-radius: 16px;
+      box-shadow: 0 1px 3px #aee57133;
+      margin-right: 3px;
+      border: 1px dashed #aee571;
+      transition: background 0.3s, color 0.3s;
+    }
+    .price:hover {
+      background: #aee571;
+      color: #175b1d;
     }
     footer {
       text-align: center;
       padding: 18px 0;
-      background: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.8);
       width: 100%;
       color: #297fa6;
-      font-size: 1em;
+      font-size: 1.09em;
+      font-family: 'Quicksand', Arial, sans-serif;
       position: static;
       margin-top: 40px;
+      border-top: 2px solid #ffe082;
+      letter-spacing: 1px;
+      box-shadow: 0 -2px 8px #ffe08222;
     }
     @media (max-width: 800px) {
       .menu-section-container, .welcome-section { padding: 16px 8px; }
       header { height: 160px; }
       .banner-content h1 { font-size: 2em; }
       .menu-section-container { padding: 20px 2vw; }
-      .accordion-content ul li { flex-direction: column; align-items: flex-start; }
+      .accordion-content ul li { flex-direction: column; align-items: flex-start; font-size: 1em; }
       .price { margin-left: 0; margin-top: 2px; }
       .banner-content .logo-icon { width: 32px; height: 32px; }
     }
