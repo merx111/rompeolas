@@ -21,9 +21,10 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: center center;
-      transition: background-position 0.2s;
       background-blend-mode: normal;
       min-width: 100vw;
+      /* Elimino transición y cualquier efecto de scroll */
+      transition: none;
     }
     header {
       position: relative;
@@ -120,11 +121,7 @@
       width: 100%;
       color: #297fa6;
       font-size: 1em;
-      /* Eliminado el position: fixed */
       position: static;
-      bottom: auto;
-      left: auto;
-      z-index: 10;
       margin-top: 40px;
     }
 
@@ -187,12 +184,5 @@
   <footer>
     &copy; 2025 Restaurante Rompeolas · Playa, Sol y Buen Sabor
   </footer>
-  <script>
-    // Parallax efecto para el fondo de playa
-    window.addEventListener('scroll', function() {
-      const scrollY = window.scrollY;
-      document.body.style.backgroundPosition = `center ${scrollY * 0.25}px`;
-    });
-  </script>
 </body>
 </html>
