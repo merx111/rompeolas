@@ -105,7 +105,8 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      /* Move content to the right to make space for arrow */
+      justify-content: flex-start;
       padding: 18px 20px;
       font-size: 1.15em;
       color: #176585;
@@ -116,16 +117,21 @@
       transition: background 0.2s;
       font-weight: 600;
       user-select: none;
-    }
-    .accordion-header:hover {
-      background: rgba(224,247,250,1);
+      gap: 14px;
     }
     .accordion-arrow {
       display: inline-block;
-      margin-left: 12px;
+      margin-left: 0;
+      margin-right: 12px;
       transition: transform 0.3s cubic-bezier(.63,-0.41,.37,1.37);
       font-size: 1.2em;
       color: #2193b0;
+      min-width: 1.2em;
+      /* Vertically align with text */
+    }
+    .accordion-header span:last-child {
+      /* Ensure the arrow is at the far left */
+      order: -1;
     }
     .accordion-section.open .accordion-arrow {
       transform: rotate(90deg);
@@ -204,7 +210,7 @@
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span>🥥 Starters & Bites</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🥥 Starters & Bites</span></div>
       <div class="accordion-content">
         <ul>
           <li>Guacamole with handmade tortilla chips</li>
@@ -222,7 +228,7 @@
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span>🐟 From the Sea</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🐟 From the Sea</span></div>
       <div class="accordion-content">
         <ul>
           <li>Grilled mahi-mahi fillet with coconut sauce</li>
@@ -238,7 +244,7 @@
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span>🍔 Burgers & Sandwiches</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🍔 Burgers & Sandwiches</span></div>
       <div class="accordion-content">
         <ul>
           <li>Beef burger with cheddar cheese and pineapple</li>
@@ -251,7 +257,7 @@
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span>🥗 Refreshing Salads</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🥗 Refreshing Salads</span></div>
       <div class="accordion-content">
         <ul>
           <li>Caesar salad with shrimp</li>
@@ -263,7 +269,7 @@
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span>🍛 Main Dishes</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🍛 Main Dishes</span></div>
       <div class="accordion-content">
         <ul>
           <li>Mixed Mediterranean-style paella</li>
@@ -278,7 +284,7 @@
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span>🍟 Snacks & Sides</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🍟 Snacks & Sides</span></div>
       <div class="accordion-content">
         <ul>
           <li>Plantain chips with lime yogurt dip</li>
@@ -291,7 +297,7 @@
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span>🍰 Desserts</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🍰 Desserts</span></div>
       <div class="accordion-content">
         <ul>
           <li>Passion fruit tart</li>
@@ -304,7 +310,7 @@
     </div>
 
     <div class="accordion-section">
-      <div class="accordion-header"><span>🍹 Drinks & Cocktails</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-header"><span class="accordion-arrow">&#9654;</span><span>🍹 Drinks & Cocktails</span></div>
       <div class="accordion-content">
         <ul>
           <li>Classic / passion fruit / mango mojito</li>
