@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Restaurante Rompeolas</title>
+  <title>Rompeolas Restaurant</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     html, body {
@@ -23,7 +23,6 @@
       background-position: center center;
       background-blend-mode: normal;
       min-width: 100vw;
-      /* Elimino transición y cualquier efecto de scroll */
       transition: none;
     }
     header {
@@ -60,7 +59,7 @@
       border-radius: 20px;
       margin-top: 8px;
     }
-    .zona-bienvenida {
+    .welcome-section {
       margin: 40px auto 25px auto;
       max-width: 600px;
       background: rgba(255,255,255,0.85);
@@ -69,50 +68,98 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       text-align: center;
     }
-    .zona-bienvenida h2 {
+    .welcome-section h2 {
       color: #2193b0;
       margin-top: 0;
     }
-    .zona-menu {
+    .menu-section-container {
       margin: 30px auto 80px auto;
       max-width: 800px;
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.95);
       border-radius: 18px;
-      padding: 32px;
+      padding: 32px 20px;
       box-shadow: 0 2px 14px rgba(0,0,0,0.13);
     }
-    .zona-menu h2 {
+    .menu-section-container h2 {
       color: #176585;
       margin-top: 0;
       text-align: center;
+      font-size: 2em;
+      margin-bottom: 0.3em;
     }
-    .menu-lista {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      justify-content: center;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    .menu-item {
-      background: #e0f7fa;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(33,147,176,0.08);
-      padding: 18px 24px;
-      width: 300px;
-      min-height: 80px;
-      margin-bottom: 12px;
-    }
-    .menu-item h3 {
-      margin: 0 0 6px 0;
-      color: #176585;
-      font-size: 1.15em;
-    }
-    .menu-item p {
-      margin: 0;
+    .menu-desc {
+      text-align: center;
       color: #297fa6;
-      font-size: 0.99em;
+      font-size: 1.15em;
+      margin-bottom: 30px;
+    }
+    .accordion-section {
+      border-radius: 10px;
+      margin-bottom: 18px;
+      box-shadow: 0 1px 4px rgba(33,147,176,0.07);
+      background: rgba(255,255,255,0.88);
+      overflow: hidden;
+      border: 1px solid #e0f7fa;
+    }
+    .accordion-header {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 20px;
+      font-size: 1.15em;
+      color: #176585;
+      background: rgba(224,247,250,0.7);
+      border: none;
+      outline: none;
+      width: 100%;
+      transition: background 0.2s;
+      font-weight: 600;
+      user-select: none;
+    }
+    .accordion-header:hover {
+      background: rgba(224,247,250,1);
+    }
+    .accordion-arrow {
+      display: inline-block;
+      margin-left: 12px;
+      transition: transform 0.3s cubic-bezier(.63,-0.41,.37,1.37);
+      font-size: 1.2em;
+      color: #2193b0;
+    }
+    .accordion-section.open .accordion-arrow {
+      transform: rotate(90deg);
+    }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(.63,-0.41,.37,1.37), padding 0.25s;
+      background: none;
+      padding: 0 20px;
+    }
+    .accordion-section.open .accordion-content {
+      padding: 16px 20px 14px 32px;
+      max-height: 800px;
+      background: none;
+    }
+    .accordion-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px 0;
+    }
+    .accordion-content ul li {
+      font-size: 1em;
+      margin-bottom: 7px;
+      color: #18435a;
+      padding-left: 0.9em;
+      text-indent: -0.9em;
+    }
+    .accordion-content ul li:before {
+      content: "•";
+      color: #297fa6;
+      display: inline-block;
+      width: 0.8em;
+      margin-left: -0.8em;
     }
     footer {
       text-align: center;
@@ -124,12 +171,11 @@
       position: static;
       margin-top: 40px;
     }
-
     @media (max-width: 800px) {
-      .zona-menu, .zona-bienvenida { padding: 16px 8px; }
-      .menu-item { width: 90%; }
+      .menu-section-container, .welcome-section { padding: 16px 8px; }
       header { height: 160px; }
       .banner-content h1 { font-size: 2em; }
+      .menu-section-container { padding: 20px 2vw; }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -138,51 +184,153 @@
   <header>
     <div class="banner-content">
       <h1>Rompeolas</h1>
-      <p>Restaurante de Playa &mdash; Sabor, brisa y mar</p>
+      <p>Beachfront Restaurant — Flavor, Breeze & Sea</p>
     </div>
   </header>
 
-  <section class="zona-bienvenida">
-    <h2>¡Bienvenidos a Rompeolas!</h2>
+  <section class="welcome-section">
+    <h2>Welcome to Rompeolas!</h2>
     <p>
-      Disfruta de la mejor gastronomía frente al mar, con productos frescos y el auténtico ambiente playero.
+      Enjoy the finest cuisine by the sea, with fresh products and an authentic beach vibe.
       <br>
-      Relájate con el sonido de las olas y la brisa marina mientras te deleitas con nuestros platos únicos.
+      Relax with the sound of the waves and the sea breeze as you savor our unique dishes.
     </p>
   </section>
 
-  <section class="zona-menu">
-    <h2>Nuestro Menú</h2>
-    <ul class="menu-lista">
-      <li class="menu-item">
-        <h3>Paella Marinera</h3>
-        <p>Arroz con mariscos frescos y un toque de azafrán.</p>
-      </li>
-      <li class="menu-item">
-        <h3>Pulpo a la brasa</h3>
-        <p>Pulpo tierno asado con aceite de oliva y pimentón.</p>
-      </li>
-      <li class="menu-item">
-        <h3>Tartar de atún</h3>
-        <p>Atún rojo fresco, aguacate y aliño cítrico.</p>
-      </li>
-      <li class="menu-item">
-        <h3>Ensalada mediterránea</h3>
-        <p>Tomate, pepino, aceitunas, queso feta y orégano.</p>
-      </li>
-      <li class="menu-item">
-        <h3>Cóctel de frutas tropicales</h3>
-        <p>Selección de frutas frescas de temporada.</p>
-      </li>
-      <li class="menu-item">
-        <h3>Mojito clásico</h3>
-        <p>Refrescante cóctel de ron, lima, hierbabuena y soda.</p>
-      </li>
-    </ul>
+  <section class="menu-section-container">
+    <h2>🌴 Menu – Sol & Sabor Beach Bar 🌴</h2>
+    <div class="menu-desc">
+      Enjoy with your feet in the sand and the taste of the sea on your lips
+    </div>
+
+    <div class="accordion-section">
+      <div class="accordion-header"><span>🥥 Starters & Bites</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-content">
+        <ul>
+          <li>Guacamole with handmade tortilla chips</li>
+          <li>Caribbean-style shrimp ceviche</li>
+          <li>Tuna tartare with mango and avocado</li>
+          <li>Garlic octopus tostadas</li>
+          <li>Tropical BBQ chicken wings</li>
+          <li>Fried calamari with lime aioli</li>
+          <li>Nachos with cheese, jalapeños, and pico de gallo</li>
+          <li>Shrimp and Oaxaca cheese quesadillas</li>
+          <li>Steamed mussels in white wine</li>
+          <li>Spicy “bravas” potatoes with passion fruit sauce</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-section">
+      <div class="accordion-header"><span>🐟 From the Sea</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-content">
+        <ul>
+          <li>Grilled mahi-mahi fillet with coconut sauce</li>
+          <li>Grilled octopus with Canarian potatoes</li>
+          <li>Baja-style fish tacos</li>
+          <li>Shrimp in Thai red curry</li>
+          <li>Seafood skewers with jasmine rice</li>
+          <li>Seafood rice stew</li>
+          <li>Garlic prawns with crispy bread</li>
+          <li>Tropical salmon poke bowl</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-section">
+      <div class="accordion-header"><span>🍔 Burgers & Sandwiches</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-content">
+        <ul>
+          <li>Beef burger with cheddar cheese and pineapple</li>
+          <li>Veggie burger with hummus and arugula</li>
+          <li>Grilled chicken sandwich with pesto</li>
+          <li>Crispy shrimp torta</li>
+          <li>Tuna wrap with spinach and chipotle mayo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-section">
+      <div class="accordion-header"><span>🥗 Refreshing Salads</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-content">
+        <ul>
+          <li>Caesar salad with shrimp</li>
+          <li>Tropical mango, avocado, and nut salad</li>
+          <li>Greek salad with feta and olives</li>
+          <li>Quinoa bowl with roasted vegetables and tofu</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-section">
+      <div class="accordion-header"><span>🍛 Main Dishes</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-content">
+        <ul>
+          <li>Mixed Mediterranean-style paella</li>
+          <li>BBQ ribs with sweet potato mash</li>
+          <li>Chicken curry with basmati rice</li>
+          <li>Mixed fajitas with homemade tortillas</li>
+          <li>Pasta with garlic seafood sauce</li>
+          <li>Wood-fired Hawaiian pizza</li>
+          <li>Stuffed arepas (shredded beef or chicken avocado)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-section">
+      <div class="accordion-header"><span>🍟 Snacks & Sides</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-content">
+        <ul>
+          <li>Plantain chips with lime yogurt dip</li>
+          <li>Iberian ham croquettes</li>
+          <li>Shrimp and cheese empanadas</li>
+          <li>Grilled corn cob with garlic butter</li>
+          <li>Tomato and basil bruschettas</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-section">
+      <div class="accordion-header"><span>🍰 Desserts</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-content">
+        <ul>
+          <li>Passion fruit tart</li>
+          <li>Brownie with coconut ice cream</li>
+          <li>Mango mousse</li>
+          <li>Roasted pineapple with honey and cinnamon</li>
+          <li>Homemade ice cream (flavors: vanilla, coconut, mango, chocolate)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-section">
+      <div class="accordion-header"><span>🍹 Drinks & Cocktails</span><span class="accordion-arrow">&#9654;</span></div>
+      <div class="accordion-content">
+        <ul>
+          <li>Classic / passion fruit / mango mojito</li>
+          <li>Piña colada</li>
+          <li>Caipirinha</li>
+          <li>Local and craft beer</li>
+          <li>Fresh coconut water</li>
+          <li>Tropical fruit smoothies</li>
+          <li>Red or white sangria</li>
+          <li>Sodas and natural juices</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <footer>
-    &copy; 2025 Restaurante Rompeolas · Playa, Sol y Buen Sabor
+    &copy; 2025 Rompeolas Restaurant · Beach, Sun & Great Flavor
   </footer>
+  <script>
+    // Accordion functionality for menu sections
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', function() {
+        const section = this.parentElement;
+        section.classList.toggle('open');
+      });
+    });
+  </script>
 </body>
 </html>
