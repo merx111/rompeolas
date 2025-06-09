@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Rompeolas Restaurant</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.freepik.com/512/616/616545.png">
   <!-- Add a Google Font for prices (e.g., 'Fira Mono') -->
   <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@500&family=Pacifico&display=swap" rel="stylesheet">
   <style>
@@ -51,6 +53,15 @@
       margin-bottom: 0.2em;
       letter-spacing: 2px;
       text-shadow: 0 2px 12px rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .banner-content .logo-icon {
+      width: 48px;
+      height: 48px;
+      vertical-align: middle;
     }
     .banner-content p {
       font-size: 1.2em;
@@ -107,7 +118,7 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       padding: 18px 20px;
       font-size: 1.15em;
       color: #176585;
@@ -118,39 +129,26 @@
       transition: background 0.2s;
       font-weight: 600;
       user-select: none;
-      /* gap: 0; -- not needed for right-aligned arrow */
-    }
-    .accordion-header span {
-      display: flex;
-      align-items: center;
     }
     .accordion-arrow {
       display: inline-block;
-      margin-left: 8px;
-      margin-right: 0;
+      margin-right: 18px;
+      margin-left: 0;
       min-width: 1.2em;
       transition: transform 0.3s cubic-bezier(.63,-0.41,.37,1.37);
       font-size: 1.2em;
       color: #2193b0;
       flex-shrink: 0;
-      position: relative;
-      right: 0;
+    }
+    .accordion-title {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      /* optional gap if you want emojis a bit away from text */
+      gap: 6px;
     }
     .accordion-section.open .accordion-arrow {
       transform: rotate(90deg);
-    }
-    /* Move arrow closer to section title by reducing width of title container */
-    .accordion-header > span:first-child {
-      flex: 1 1 auto;
-    }
-    .accordion-header > .accordion-arrow {
-      flex: 0 0 auto;
-      margin-left: 0.6em;
-      /* Move arrow a bit more to the left */
-    }
-    /* For right-aligned arrow, always at same position */
-    .accordion-header {
-      /* Arrow always right, title always left */
     }
     .accordion-content {
       max-height: 0;
@@ -212,13 +210,17 @@
       .menu-section-container { padding: 20px 2vw; }
       .accordion-content ul li { flex-direction: column; align-items: flex-start; }
       .price { margin-left: 0; margin-top: 2px; }
+      .banner-content .logo-icon { width: 32px; height: 32px; }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="banner-content">
-      <h1>Rompeolas</h1>
+      <h1>
+        <img src="https://cdn-icons-png.freepik.com/512/616/616545.png" alt="Palm icon" class="logo-icon">
+        Rompeolas
+      </h1>
       <p>Beachfront Restaurant — Flavor, Breeze & Sea</p>
     </div>
   </header>
@@ -240,8 +242,8 @@
 
     <div class="accordion-section">
       <div class="accordion-header">
-        <span>🥥 Starters & Bites</span>
         <span class="accordion-arrow">&#9654;</span>
+        <span class="accordion-title">🥥 Starters & Bites</span>
       </div>
       <div class="accordion-content">
         <ul>
@@ -261,8 +263,8 @@
 
     <div class="accordion-section">
       <div class="accordion-header">
-        <span>🐟 From the Sea</span>
         <span class="accordion-arrow">&#9654;</span>
+        <span class="accordion-title">🐟 From the Sea</span>
       </div>
       <div class="accordion-content">
         <ul>
@@ -280,8 +282,8 @@
 
     <div class="accordion-section">
       <div class="accordion-header">
-        <span>🍔 Burgers & Sandwiches</span>
         <span class="accordion-arrow">&#9654;</span>
+        <span class="accordion-title">🍔 Burgers & Sandwiches</span>
       </div>
       <div class="accordion-content">
         <ul>
@@ -296,8 +298,8 @@
 
     <div class="accordion-section">
       <div class="accordion-header">
-        <span>🥗 Refreshing Salads</span>
         <span class="accordion-arrow">&#9654;</span>
+        <span class="accordion-title">🥗 Refreshing Salads</span>
       </div>
       <div class="accordion-content">
         <ul>
@@ -311,8 +313,8 @@
 
     <div class="accordion-section">
       <div class="accordion-header">
-        <span>🍛 Main Dishes</span>
         <span class="accordion-arrow">&#9654;</span>
+        <span class="accordion-title">🍛 Main Dishes</span>
       </div>
       <div class="accordion-content">
         <ul>
@@ -329,8 +331,8 @@
 
     <div class="accordion-section">
       <div class="accordion-header">
-        <span>🍟 Snacks & Sides</span>
         <span class="accordion-arrow">&#9654;</span>
+        <span class="accordion-title">🍟 Snacks & Sides</span>
       </div>
       <div class="accordion-content">
         <ul>
@@ -345,8 +347,8 @@
 
     <div class="accordion-section">
       <div class="accordion-header">
-        <span>🍰 Desserts</span>
         <span class="accordion-arrow">&#9654;</span>
+        <span class="accordion-title">🍰 Desserts</span>
       </div>
       <div class="accordion-content">
         <ul>
@@ -361,8 +363,8 @@
 
     <div class="accordion-section">
       <div class="accordion-header">
-        <span>🍹 Drinks & Cocktails</span>
         <span class="accordion-arrow">&#9654;</span>
+        <span class="accordion-title">🍹 Drinks & Cocktails</span>
       </div>
       <div class="accordion-content">
         <ul>
