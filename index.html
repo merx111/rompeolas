@@ -15,14 +15,18 @@
       position: relative;
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #18435a;
-      /* Fondo de playa con mar en GRANDE */
+      /* Fondo de playa con mar en GRANDE y siempre cubriendo la pantalla */
       background: #6dd5ed;
-      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1500&q=80');
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      background-position: center 0;
+      background-position: center center;
       transition: background-position 0.2s;
+      /* Para asegurar que siempre cubra incluso en pantallas muy anchas/altas */
+      background-blend-mode: normal;
+      min-height: 100vh;
+      min-width: 100vw;
     }
     header {
       position: relative;
@@ -129,6 +133,7 @@
       .zona-menu, .zona-bienvenida { padding: 16px 8px; }
       .menu-item { width: 90%; }
       header { height: 160px; }
+      .banner-content h1 { font-size: 2em; }
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -187,7 +192,6 @@
     // Parallax efecto para el fondo de playa
     window.addEventListener('scroll', function() {
       const scrollY = window.scrollY;
-      // Fondo de toda la página
       document.body.style.backgroundPosition = `center ${scrollY * 0.25}px`;
     });
   </script>
