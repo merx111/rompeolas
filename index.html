@@ -5,11 +5,23 @@
   <title>Restaurante Rompeolas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
+      padding: 0;
+    }
+    body {
+      min-height: 100vh;
+      position: relative;
       font-family: 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(to bottom, #6dd5ed, #2193b0 80%);
       color: #18435a;
+      /* Fondo de playa con mar */
+      background: #6dd5ed;
+      background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center 0;
+      background-repeat: no-repeat;
+      transition: background-position 0.2s;
     }
     header {
       position: relative;
@@ -62,7 +74,6 @@
       border-radius: 20px;
       margin-top: 8px;
     }
-    /* Resto de tu CSS igual que antes */
     .zona-bienvenida {
       margin: 40px auto 25px auto;
       max-width: 600px;
@@ -183,12 +194,14 @@
     &copy; 2025 Restaurante Rompeolas · Playa, Sol y Buen Sabor
   </footer>
   <script>
-    // Parallax efecto para el banner
+    // Parallax efecto para el banner y el fondo
     window.addEventListener('scroll', function() {
-      const banner = document.getElementById('bannerBg');
       const scrollY = window.scrollY;
-      // Ajusta el valor de 0.5 para hacer más/menos movimiento
+      // Banner: velocidad parallax
+      const banner = document.getElementById('bannerBg');
       banner.style.backgroundPosition = `center ${scrollY * 0.5}px`;
+      // Fondo de toda la página: otro ratio parallax
+      document.body.style.backgroundPosition = `center ${scrollY * 0.25}px`;
     });
   </script>
 </body>
