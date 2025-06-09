@@ -15,7 +15,6 @@
       position: relative;
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #18435a;
-      /* Fondo de playa con mar en GRANDE y siempre cubriendo la pantalla */
       background: #6dd5ed;
       background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');
       background-size: cover;
@@ -23,9 +22,7 @@
       background-attachment: fixed;
       background-position: center center;
       transition: background-position 0.2s;
-      /* Para asegurar que siempre cubra incluso en pantallas muy anchas/altas */
       background-blend-mode: normal;
-      min-height: 100vh;
       min-width: 100vw;
     }
     header {
@@ -36,7 +33,6 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      /* Banner blanco con opacidad */
       background: rgba(255,255,255,0.85);
       z-index: 2;
     }
@@ -121,12 +117,15 @@
       text-align: center;
       padding: 18px 0;
       background: rgba(255,255,255,0.7);
-      position: fixed;
       width: 100%;
-      bottom: 0;
       color: #297fa6;
       font-size: 1em;
+      /* Eliminado el position: fixed */
+      position: static;
+      bottom: auto;
+      left: auto;
       z-index: 10;
+      margin-top: 40px;
     }
 
     @media (max-width: 800px) {
